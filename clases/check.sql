@@ -13,6 +13,8 @@ ALTER TABLE country ADD CHECK(
 -- restricción de contienentes
 SELECT * FROM country;
 
+SELECT * FROM country WHERE code = 'CRI';
+
 SELECT DISTINCT continent FROM country;
 
 -- en algunos casos el casteo es necesario para eso es el ::text para decirle que lo castee como un texto
@@ -26,3 +28,6 @@ ALTER TABLE country ADD CHECK(
 	(continent = 'Africa'::text) or
 	(continent = 'Europe'::text)
 );
+
+--BORAR UN CHECK O CONSTRAINT DE UNA TABLA
+ALTER TABLE country DROP CONSTRAINT "country_continent_check3";
