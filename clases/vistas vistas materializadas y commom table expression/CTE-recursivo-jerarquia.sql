@@ -23,3 +23,18 @@ WITH RECURSIVE bosses AS (
 	WHERE depth < 2
 )
 SELECT * FROM bosses;
+
+
+
+WITH RECURSIVE bosses_name AS (
+	--init
+	SELECT id,name, CAST('' AS varchar) as reports_to, 1 as depth FROM employees WHERE id = 1
+	UNION
+	--recursividad
+	SELECT employees.id,employees.name,bosses_name.name, depth + 1 FROM employees 
+	INNER JOIN bosses_name ON bosses_name.id = employees.reports_to
+	--caso base
+	WHERE depth < 10
+)
+SELECT * FROM bosses_name;
+
