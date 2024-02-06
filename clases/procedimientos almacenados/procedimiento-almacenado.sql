@@ -14,7 +14,9 @@ AS $$
 $$
 LANGUAGE plpgsql;
 
+CALL insert_region_proc(5, 'Central America');
 
+SELECT * FROM regions;
 
 
 
